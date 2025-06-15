@@ -1,0 +1,242 @@
+{
+  "os_info": {
+    "name": "MaxRegnerOS",
+    "version": "1.0.0",
+    "codename": "Genesis",
+    "architecture": "x86_64",
+    "kernel_version": "6.6.0-maxregner",
+    "build_date": "2024-06-15",
+    "iso_size_target": "3.5GB"
+  },
+  "build_config": {
+    "parallel_jobs": "auto",
+    "optimization_level": "O2",
+    "debug_symbols": false,
+    "strip_binaries": true,
+    "compress_kernel": true,
+    "compression_algorithm": "xz"
+  },
+  "kernel_config": {
+    "base_version": "6.6",
+    "custom_patches": [
+      "maxregner-performance.patch",
+      "maxregner-security.patch",
+      "maxregner-hardware.patch"
+    ],
+    "enabled_features": [
+      "CONFIG_PREEMPT",
+      "CONFIG_HIGH_RES_TIMERS",
+      "CONFIG_NO_HZ",
+      "CONFIG_SMP",
+      "CONFIG_HOTPLUG_CPU",
+      "CONFIG_X86_64",
+      "CONFIG_64BIT",
+      "CONFIG_MULTICORE",
+      "CONFIG_EXT4_FS",
+      "CONFIG_SQUASHFS",
+      "CONFIG_ISO9660_FS",
+      "CONFIG_VFAT_FS",
+      "CONFIG_NTFS_FS",
+      "CONFIG_FUSE_FS",
+      "CONFIG_TMPFS",
+      "CONFIG_PROC_FS",
+      "CONFIG_SYSFS",
+      "CONFIG_DEVTMPFS",
+      "CONFIG_FB_VESA",
+      "CONFIG_FB_EFI",
+      "CONFIG_DRM",
+      "CONFIG_DRM_I915",
+      "CONFIG_DRM_RADEON",
+      "CONFIG_DRM_NOUVEAU",
+      "CONFIG_SOUND",
+      "CONFIG_SND_HDA_INTEL",
+      "CONFIG_SND_USB_AUDIO",
+      "CONFIG_USB_EHCI_HCD",
+      "CONFIG_USB_OHCI_HCD",
+      "CONFIG_USB_UHCI_HCD",
+      "CONFIG_USB_XHCI_HCD",
+      "CONFIG_NET",
+      "CONFIG_INET",
+      "CONFIG_WIRELESS",
+      "CONFIG_WLAN",
+      "CONFIG_ETHERNET",
+      "CONFIG_E1000E",
+      "CONFIG_R8169",
+      "CONFIG_ATH9K",
+      "CONFIG_IWLWIFI"
+    ]
+  },
+  "desktop_environment": {
+    "name": "MaxRegner Desktop",
+    "version": "1.0.0",
+    "window_manager": "maxregner_wm",
+    "display_server": "X11",
+    "compositor": "built-in",
+    "theme": {
+      "name": "MaxRegner Blue",
+      "primary_color": "#1e3a8a",
+      "secondary_color": "#2563eb",
+      "accent_color": "#3b82f6",
+      "background_color": "#f8fafc",
+      "text_color": "#1e293b",
+      "font_family": "MaxRegner Sans",
+      "font_size": 11
+    },
+    "components": [
+      "maxregner_wm",
+      "maxregner_panel",
+      "maxregner_launcher",
+      "maxregner_settings",
+      "maxregner_notifications"
+    ]
+  },
+  "applications": {
+    "core_apps": [
+      {
+        "name": "MaxRegner Files",
+        "executable": "maxregner_files",
+        "category": "System",
+        "description": "File manager for MaxRegnerOS"
+      },
+      {
+        "name": "MaxRegner Editor",
+        "executable": "maxregner_edit",
+        "category": "Office",
+        "description": "Text editor with syntax highlighting"
+      },
+      {
+        "name": "MaxRegner Browser",
+        "executable": "maxregner_browser",
+        "category": "Network",
+        "description": "Web browser with modern rendering"
+      },
+      {
+        "name": "MaxRegner Terminal",
+        "executable": "maxregner_terminal",
+        "category": "System",
+        "description": "Terminal emulator"
+      },
+      {
+        "name": "MaxRegner Media",
+        "executable": "maxregner_media",
+        "category": "Multimedia",
+        "description": "Media player for audio and video"
+      },
+      {
+        "name": "MaxRegner Settings",
+        "executable": "maxregner_settings",
+        "category": "System",
+        "description": "System configuration tool"
+      }
+    ],
+    "development_tools": [
+      "gcc",
+      "make",
+      "git",
+      "vim",
+      "nano",
+      "gdb",
+      "valgrind"
+    ],
+    "system_tools": [
+      "htop",
+      "ps",
+      "kill",
+      "mount",
+      "umount",
+      "fdisk",
+      "lsblk"
+    ]
+  },
+  "hardware_support": {
+    "cpu_architectures": ["x86_64"],
+    "minimum_ram": "1GB",
+    "recommended_ram": "2GB",
+    "minimum_storage": "2GB",
+    "recommended_storage": "4GB",
+    "graphics": [
+      "Intel HD Graphics",
+      "NVIDIA GeForce",
+      "AMD Radeon",
+      "VESA compatible"
+    ],
+    "network": [
+      "Ethernet (most chipsets)",
+      "WiFi (common chipsets)",
+      "Bluetooth (basic support)"
+    ],
+    "audio": [
+      "HDA Intel",
+      "USB Audio",
+      "AC97 compatible"
+    ]
+  },
+  "boot_config": {
+    "bootloader": "GRUB2",
+    "timeout": 10,
+    "default_entry": 0,
+    "kernel_parameters": [
+      "quiet",
+      "splash",
+      "boot=live"
+    ],
+    "safe_mode_parameters": [
+      "quiet",
+      "nosplash",
+      "vga=normal",
+      "boot=live"
+    ]
+  },
+  "filesystem": {
+    "live_fs": "squashfs",
+    "compression": "xz",
+    "compression_level": 6,
+    "block_size": "1M",
+    "root_fs": "ext4",
+    "boot_fs": "vfat"
+  },
+  "security": {
+    "enable_selinux": false,
+    "enable_apparmor": false,
+    "enable_firewall": true,
+    "default_user": "maxregner",
+    "auto_login": true,
+    "password_policy": "medium"
+  },
+  "networking": {
+    "dhcp_client": "dhcpcd",
+    "dns_servers": [
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.1.1.1"
+    ],
+    "network_manager": "maxregner_network"
+  },
+  "package_management": {
+    "package_format": ".mrpkg",
+    "package_manager": "mrpkg",
+    "repositories": [
+      "https://packages.maxregneros.com/main",
+      "https://packages.maxregneros.com/updates"
+    ]
+  },
+  "build_targets": {
+    "iso": {
+      "enabled": true,
+      "filename": "MaxRegnerOS-{version}.iso",
+      "bootable": true,
+      "hybrid": true
+    },
+    "usb": {
+      "enabled": true,
+      "filename": "MaxRegnerOS-{version}-usb.img",
+      "persistent": true
+    },
+    "vm": {
+      "enabled": true,
+      "formats": ["vmdk", "vdi", "qcow2"],
+      "size": "4GB"
+    }
+  }
+}
+
