@@ -1,0 +1,58 @@
+# Windows 12 Ignite Theme Engine Makefile
+# Modern UI framework for Windows XP with DirectX 11 acceleration
+
+!include $(NTMAKEENV)\makefile.def
+
+TARGETNAME=ignite_theme
+TARGETTYPE=DYNLINK
+TARGETPATH=obj
+
+# Include paths
+INCLUDES=\
+    $(SDK_INC_PATH);\
+    $(DDK_INC_PATH);\
+    $(CRT_INC_PATH);\
+    $(SHELL_INC_PATH);\
+    $(WINDOWS_INC_PATH)
+
+# Source files
+SOURCES=\
+    renderer.cpp \
+    compositor.cpp \
+    effects.cpp \
+    snap_layouts.cpp \
+    virtual_desktops.cpp \
+    notifications.cpp \
+    modern_controls.cpp
+
+# Libraries
+TARGETLIBS=\
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\user32.lib \
+    $(SDK_LIB_PATH)\gdi32.lib \
+    $(SDK_LIB_PATH)\advapi32.lib \
+    $(SDK_LIB_PATH)\shell32.lib \
+    $(SDK_LIB_PATH)\comctl32.lib \
+    $(SDK_LIB_PATH)\ole32.lib \
+    $(SDK_LIB_PATH)\oleaut32.lib \
+    $(SDK_LIB_PATH)\uuid.lib \
+    $(SDK_LIB_PATH)\d3d11.lib \
+    $(SDK_LIB_PATH)\d2d1.lib \
+    $(SDK_LIB_PATH)\dwrite.lib \
+    $(SDK_LIB_PATH)\windowscodecs.lib
+
+# Compiler flags
+C_DEFINES=$(C_DEFINES) -DUNICODE -D_UNICODE -DWIN32_LEAN_AND_MEAN
+
+# Enable modern C++ features
+USE_MSVCRT=1
+USE_STL=1
+
+# Output directory
+TARGETPATH=..\..\..\..\..\dist
+
+# Export definitions
+DLLDEF=ignite_theme.def
+
+# Version information
+RCNOFONTMAP=1

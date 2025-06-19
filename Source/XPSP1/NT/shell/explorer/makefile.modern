@@ -1,0 +1,57 @@
+# Windows 12 Ignite Modern Explorer Makefile
+# Modern taskbar, start menu, and desktop experience
+
+!include $(NTMAKEENV)\makefile.def
+
+TARGETNAME=modern_explorer
+TARGETTYPE=PROGRAM
+TARGETPATH=obj
+
+# Include paths
+INCLUDES=\
+    $(SDK_INC_PATH);\
+    $(DDK_INC_PATH);\
+    $(CRT_INC_PATH);\
+    $(SHELL_INC_PATH);\
+    $(WINDOWS_INC_PATH);\
+    ..\themes\ignite
+
+# Source files
+SOURCES=\
+    modern_taskbar.cpp \
+    modern_startmenu.cpp \
+    modern_desktop.cpp \
+    snap_assist.cpp \
+    modern_notifications.cpp \
+    modern_explorer_main.cpp
+
+# Libraries
+TARGETLIBS=\
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\user32.lib \
+    $(SDK_LIB_PATH)\gdi32.lib \
+    $(SDK_LIB_PATH)\advapi32.lib \
+    $(SDK_LIB_PATH)\shell32.lib \
+    $(SDK_LIB_PATH)\comctl32.lib \
+    $(SDK_LIB_PATH)\ole32.lib \
+    $(SDK_LIB_PATH)\oleaut32.lib \
+    $(SDK_LIB_PATH)\uuid.lib \
+    $(SDK_LIB_PATH)\shlwapi.lib \
+    $(SDK_LIB_PATH)\powrprof.lib \
+    ..\themes\ignite\ignite_theme.lib
+
+# Compiler flags
+C_DEFINES=$(C_DEFINES) -DUNICODE -D_UNICODE -DWIN32_LEAN_AND_MEAN -DMODERN_EXPLORER
+
+# Enable modern C++ features
+USE_MSVCRT=1
+USE_STL=1
+
+# Output directory
+TARGETPATH=..\..\..\..\..\dist
+
+# Resources
+NTTARGETFILE0=modern_explorer.res
+
+# Version information
+RCNOFONTMAP=1
